@@ -45,7 +45,7 @@
                 <li class="list-group-item">fgbs2000@gmail.com</li>
                 <li class="list-group-item">Rua Juvenal de Castro Lima, Nº 06, São Francisco, Pentecoste-CE</li>
                 <li class="list-group-item">https://github.com/GeovaneBarros</li>
-                <li class="list-group-item">https://linkedin.com/GeovaneBarros02</li>    
+                <li class="list-group-item">https://www.linkedin.com/in/geovane-silva-02bbaa1ba/</li>    
             </ul> 
         </div>  
     </div>
@@ -54,8 +54,15 @@
     <div class="container" id = "rodape">
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <p class="text-end text-muted">
-                Geovane Barros © + Ano
+                Geovane Barros © + <label id="ano"  onload="ano()"></label>
             </p>
         </footer>
      </div>
+
+    <script>
+        function ano()
+            {
+            document.write(new Date().getFullYear());
+            }
+    </script>
 {% endblock %}
