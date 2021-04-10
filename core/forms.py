@@ -1,21 +1,18 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Pessoa
+from .models import Pessoa, Produto
 
 
 class CreateUserForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CreateUserForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
     class Meta:
         model = User
         fields = ['username', 'password1', 'password2']
-        labels = {
-            'username': ('Email'),
-        }
-        widgets = {
-            'username': forms.EmailInput(attrs = {'class':'form-control'}),
-            'password1': forms.PasswordInput(attrs = {'class':'form-control'}),
-            'password2': forms.PasswordInput(attrs = {'class':'form-control'}),
-        }
+        
 
 class CreatePessoaForm(forms.ModelForm):
     class Meta:
@@ -24,11 +21,21 @@ class CreatePessoaForm(forms.ModelForm):
 
         widgets = {
             'nome': forms.TextInput(attrs = {'class':'form-control'}),
-            'cep': forms.TextInput(attrs = {'class':'form-control'}),
-            'endereco': forms.TextInput(attrs = {'class':'form-control'}),
+            'cep': forms.TextInput(attrs = {'class':'form-control', 'id':'cep', 'onblur':"pesquisacep(this.value);"}),
+            'endereco': forms.TextInput(attrs = {'class':'form-control', 'id':'endereco'}),
             'numero': forms.NumberInput(attrs = {'class':'form-control'}),
-            'bairro': forms.TextInput(attrs = {'class':'form-control'}),
+            'bairro': forms.TextInput(attrs = {'class':'form-control', 'id':'bairro'}),
             'complemento': forms.TextInput(attrs = {'class':'form-control'}),
-            'cidade': forms.TextInput(attrs = {'class':'form-control'}),
-            'estado': forms.TextInput(attrs = {'class':'form-control'}),
+            'cidade': forms.TextInput(attrs = {'class':'form-control', 'id':'cidade'}),
+            'estado': forms.TextInput(attrs = {'class':'form-control','id':'estado'}),
+        }
+class CreateProdutoForm(forms.ModelForm):
+    class Meta:
+        model = Produto
+        fields = ['nome', 'preco', 'estoque']
+
+        widgets={
+            'nome': forms.TextInput(attrs = {'class':'form-control', 'id':'nome_produto'}),
+            'preco': forms.NumberInput(attrs = {'class':'form-control'}),
+            'estoque': forms.NumberInput(attrs = {'class':'form-control'}),
         }

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import index, home, login, cadastro, produto, logout
+from core.views import index, home, login, cadastro, produto, logout, deletar_produto
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index', index, name = 'index_page'),
@@ -24,5 +24,5 @@ urlpatterns = [
     path('logout', logout, name = 'logout_page'),
     path('cadastro', cadastro, name = 'cadastro_page'),
     path('produto', produto, name = 'produto_page'),
-
+    path('deletar_produto/<int:id>', deletar_produto, name="deletar_produto")
 ]

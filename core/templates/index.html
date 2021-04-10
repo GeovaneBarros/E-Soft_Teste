@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %} Index {% endblock%}
+{% block title %} Index {% endblock %}
+
+{% block head %}
+    <style>
+        #rodape{
+            position: flex;
+            margin-top: 10%;
+        }
+        #informacoes{
+            margin-top: 10%;
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
+    <!--Cabeçalho-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,13 +36,9 @@
             </div>
         </div>
         </nav>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class = "container">
+
+    <!--Informações-->
+    <div class = "container" id="informacoes">
             <div class = "col align-self-center">
             <ul class="list-group">
                 <li class="list-group-item">Francisco Geovane Barros da Silva</li>
@@ -40,4 +49,13 @@
             </ul> 
         </div>  
     </div>
+
+    <!--Rodapé-->
+    <div class="container" id = "rodape">
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <p class="text-end text-muted">
+                Geovane Barros © + Ano
+            </p>
+        </footer>
+     </div>
 {% endblock %}

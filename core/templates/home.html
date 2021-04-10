@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block title %} Home {% endblock%}
-    {% block content%}
+
+{% block content%}
+
+    <!--Cabeçalho -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,9 +21,17 @@
                 <li class="nav-item">
                 <a class="nav-link active" href="{% url 'logout_page'%}">Sair</a>
                 </li>
-                
             </ul>
             </div>
         </div>
         </nav>
+
+    <!--Dashboard-->
+    <div class="card mx-auto mt-5" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Produtos cadastrados em nosso sistema</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Quantidade</h6>
+        <p class="card-text">A quantidade atual de produtos diferentes cadastrado no site é de {{produtos}} produtos</p>
+    </div>
+    </div>
   {% endblock%}
